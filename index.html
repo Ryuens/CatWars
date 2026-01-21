@@ -142,11 +142,11 @@
             left: 0;
             right: 0;
             background: linear-gradient(180deg, rgba(200,180,160,0.95) 0%, rgba(180,160,140,0.98) 100%);
-            padding: 15px 10px;
+            padding: 10px 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            min-height: 130px;
+            gap: 6px;
+            min-height: 110px;
             border-top: 3px solid rgba(100, 80, 60, 0.5);
         }
 
@@ -155,21 +155,21 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 80px;
+            min-width: 65px;
         }
 
         #fishBreadGauge {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
             border-radius: 50%;
-            border: 4px solid #CC8800;
+            border: 3px solid #CC8800;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
         }
 
         #fishBreadGauge::before {
@@ -189,13 +189,13 @@
         }
 
         #fishBreadIcon {
-            font-size: 28px;
+            font-size: 22px;
             z-index: 1;
         }
 
         #fishBreadCount {
             color: #333;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: bold;
             z-index: 1;
             text-shadow: 1px 1px 0 white;
@@ -204,26 +204,26 @@
         /* Unit Cards */
         #unitCardsContainer {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex: 1;
             justify-content: center;
         }
 
         .unit-card {
-            width: 80px;
-            height: 95px;
+            width: 70px;
+            height: 85px;
             background: linear-gradient(180deg, #f5f0e6 0%, #e8e0d5 100%);
-            border-radius: 10px;
-            border: 3px solid #c0b0a0;
+            border-radius: 8px;
+            border: 2px solid #c0b0a0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 5px 6px 5px;
+            padding: 6px 4px 5px 4px;
             cursor: pointer;
             transition: transform 0.15s, border-color 0.15s;
             position: relative;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .unit-card.active {
@@ -250,10 +250,10 @@
         }
 
         .unit-icon-container {
-            width: 55px;
-            height: 55px;
+            width: 45px;
+            height: 45px;
             background: #d0c8b8;
-            border-radius: 8px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -261,26 +261,26 @@
         }
 
         .unit-icon {
-            font-size: 36px;
+            font-size: 28px;
         }
 
         .unit-cost {
             background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
-            padding: 3px 12px;
-            border-radius: 12px;
+            padding: 2px 8px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
             border: 2px solid #CC8800;
         }
 
         .unit-cost .cost-icon {
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .unit-cost span {
             color: #333;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
         }
 
@@ -352,12 +352,17 @@
             background: linear-gradient(180deg, #4CAF50 0%, #388E3C 100%);
             border: 3px solid #81C784;
             border-radius: 25px;
-            padding: 18px 50px;
+            padding: 15px 40px;
             color: white;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
-            animation: ctaPulse 1.5s ease-in-out infinite;
+            animation: endCtaPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes endCtaPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* Floating Effects */
@@ -509,18 +514,18 @@
 
         // Game State
         const GameState = {
-            fishBread: 245,
+            fishBread: 100,
             fishBreadMax: 999,
-            fishBreadProductionRate: 1,
+            fishBreadProductionRate: 2,
             fishBreadGaugeProgress: 0,
             gold: 0,
             wave: 1,
             maxWaves: 3,
-            unitCosts: [30, 40, 500],
-            playerBaseHP: 400,
-            enemyBaseHP: 400,
-            playerBaseMaxHP: 400,
-            enemyBaseMaxHP: 400,
+            unitCosts: [30, 40, 80],
+            playerBaseHP: 800,
+            enemyBaseHP: 500,
+            playerBaseMaxHP: 800,
+            enemyBaseMaxHP: 500,
             enemiesKilled: 0,
             totalEnemies: 10,
             gameStarted: false,
@@ -539,17 +544,17 @@
                 { name: 'Knight', hp: 120, attack: 25, speed: 35, range: 40, attackSpeed: 1.2, type: 'melee', color: '#9E9E9E' }
             ],
             enemy: [
-                { name: 'Enemy1', hp: 50, attack: 10, speed: 40, range: 35, attackSpeed: 1.0, type: 'melee', color: '#8B4513' },
-                { name: 'Enemy2', hp: 70, attack: 15, speed: 35, range: 35, attackSpeed: 1.1, type: 'melee', color: '#A0522D' },
-                { name: 'Enemy3', hp: 100, attack: 20, speed: 30, range: 40, attackSpeed: 1.3, type: 'melee', color: '#6B4423' }
+                { name: 'Enemy1', hp: 40, attack: 5, speed: 35, range: 35, attackSpeed: 1.2, type: 'melee', color: '#8B4513' },
+                { name: 'Enemy2', hp: 60, attack: 8, speed: 30, range: 35, attackSpeed: 1.3, type: 'melee', color: '#A0522D' },
+                { name: 'Enemy3', hp: 90, attack: 12, speed: 25, range: 40, attackSpeed: 1.5, type: 'melee', color: '#6B4423' }
             ]
         };
 
         // Wave Configurations - 순차적으로 더 많은 적 등장
         const WaveConfigs = [
-            { enemies: [{ type: 0, count: 5, delay: 800 }], goldPerKill: 3 },
-            { enemies: [{ type: 0, count: 6, delay: 700 }, { type: 1, count: 3, delay: 900 }], goldPerKill: 4 },
-            { enemies: [{ type: 0, count: 8, delay: 600 }, { type: 1, count: 5, delay: 800 }, { type: 2, count: 2, delay: 1200 }], goldPerKill: 5 }
+            { enemies: [{ type: 0, count: 4, delay: 1500 }], goldPerKill: 5 },
+            { enemies: [{ type: 0, count: 5, delay: 1200 }, { type: 1, count: 3, delay: 1500 }], goldPerKill: 8 },
+            { enemies: [{ type: 0, count: 6, delay: 1000 }, { type: 1, count: 4, delay: 1200 }, { type: 2, count: 2, delay: 2000 }], goldPerKill: 10 }
         ];
 
         // Game Objects
