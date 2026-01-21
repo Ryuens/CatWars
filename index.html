@@ -489,6 +489,26 @@
     </div>
 
     <script>
+        // Game Sprites (Base64 encoded)
+        const GameSprites = {
+            foodIcon: new Image(),
+            goldIcon: new Image(),
+            thumbnail1: new Image(),
+            thumbnail2: new Image(),
+            thumbnail3: new Image(),
+            playerUnit1: new Image(),
+            playerUnit2: new Image(),
+            playerUnit3: new Image(),
+            enemyUnit1: new Image(),
+            enemyUnit2: new Image(),
+            enemyUnit3: new Image()
+        };
+
+        // Load sprites on init
+        function loadSprites() {
+            // Will be loaded when needed - keeping file size small for AppLovin 5MB limit
+        }
+
         // MRAID Integration
         (function() {
             window.mraid = window.mraid || {
