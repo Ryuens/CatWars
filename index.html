@@ -20,7 +20,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #5a8f3d;
+            background: #4a6741;
             font-family: 'Arial', sans-serif;
         }
 
@@ -39,7 +39,7 @@
             width: 100%;
         }
 
-        /* Top UI Bar */
+        /* Top Bar */
         #topBar {
             position: absolute;
             top: 10px;
@@ -53,114 +53,201 @@
 
         .top-left {
             display: flex;
+            flex-direction: column;
             gap: 8px;
         }
 
-        .resource-box {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 6px 12px;
-            border-radius: 15px;
+        #gameLogo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #FF6B35;
+            text-shadow: 2px 2px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        #ctaButton {
+            background: linear-gradient(180deg, #E53935 0%, #C62828 100%);
+            border: 2px solid #FFCDD2;
+            border-radius: 8px;
+            padding: 8px 20px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .top-right {
             display: flex;
             align-items: center;
-            gap: 5px;
         }
 
-        .resource-box img, .resource-box .icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        .resource-box span {
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .gold-icon {
-            color: #FFD700;
-            font-size: 16px;
-        }
-
-        #timelineDisplay {
+        #goldDisplay {
             background: rgba(0, 0, 0, 0.6);
-            padding: 8px 12px;
-            border-radius: 10px;
-            text-align: right;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        #timelineDisplay .timeline {
-            color: #aaa;
-            font-size: 11px;
+        #goldDisplay .gold-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            border: 2px solid #CC8800;
         }
 
-        #timelineDisplay .battle {
+        #goldDisplay span {
             color: white;
-            font-size: 14px;
+            font-size: 18px;
             font-weight: bold;
         }
 
-        /* Progress Bar */
-        #progressContainer {
+        /* Bonus Fish Bread */
+        #bonusFishBread {
             position: absolute;
+            left: 15px;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateY(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            z-index: 5;
+            cursor: pointer;
+            z-index: 15;
+            animation: sparkle 1s ease-in-out infinite;
         }
 
-        #progressText {
-            color: white;
+        #bonusFishBread.hidden {
+            display: none;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: translateY(-50%) scale(1); filter: brightness(1); }
+            50% { transform: translateY(-50%) scale(1.1); filter: brightness(1.3); }
+        }
+
+        #bonusFishBread .sparkle-icon {
+            font-size: 40px;
+            text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+        }
+
+        #bonusFishBread .bonus-amount {
+            background: rgba(0,0,0,0.7);
+            color: #FFD700;
+            padding: 4px 10px;
+            border-radius: 10px;
             font-size: 14px;
             font-weight: bold;
-            text-shadow: 1px 1px 2px black;
-            margin-bottom: 5px;
+            margin-top: 5px;
         }
 
-        #progressBarOuter {
-            width: 200px;
-            height: 12px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 6px;
-            overflow: hidden;
-            border: 2px solid #333;
-        }
-
-        #progressBarInner {
-            height: 100%;
-            background: linear-gradient(180deg, #5bc0de 0%, #31b0d5 100%);
-            width: 0%;
-            transition: width 0.3s;
-        }
-
-        /* Bottom UI Panel */
+        /* Bottom Panel */
         #bottomPanel {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(180deg, rgba(200,180,160,0.95) 0%, rgba(180,160,140,0.98) 100%);
-            padding: 10px 8px;
+            background: linear-gradient(180deg, rgba(180,160,140,0.95) 0%, rgba(160,140,120,0.98) 100%);
+            padding: 8px;
             display: flex;
-            align-items: center;
-            gap: 6px;
-            min-height: 110px;
+            align-items: flex-end;
+            gap: 8px;
+            min-height: 140px;
             border-top: 3px solid rgba(100, 80, 60, 0.5);
         }
 
-        /* Fish Bread Container */
+        /* Unit Cards Container */
+        #unitCardsContainer {
+            display: flex;
+            gap: 8px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .unit-card {
+            width: 85px;
+            background: linear-gradient(180deg, #f5f0e6 0%, #e8e0d5 100%);
+            border-radius: 10px;
+            border: 2px solid #c0b0a0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .unit-card .spawn-count {
+            background: #4CAF50;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 8px;
+            margin-bottom: 3px;
+        }
+
+        .unit-card .unit-thumbnail {
+            width: 55px;
+            height: 55px;
+            background: #d0c8b8;
+            border-radius: 8px;
+            border: 2px solid #a09080;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3px;
+        }
+
+        .unit-card .unit-thumbnail img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .unit-card .action-btn {
+            width: 100%;
+            padding: 6px 4px;
+            border-radius: 6px;
+            border: none;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .unit-card .action-btn.spawn {
+            background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+            border: 2px solid #CC8800;
+            color: #333;
+        }
+
+        .unit-card .action-btn.evolve {
+            background: linear-gradient(180deg, #42A5F5 0%, #1E88E5 100%);
+            border: 2px solid #64B5F6;
+            color: white;
+        }
+
+        .unit-card .action-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Fish Bread Gauge */
         #fishBreadContainer {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 65px;
+            min-width: 70px;
         }
 
         #fishBreadGauge {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
             border-radius: 50%;
             border: 3px solid #CC8800;
@@ -168,164 +255,38 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
             box-shadow: 0 3px 6px rgba(0,0,0,0.3);
         }
 
-        #fishBreadGauge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 50%;
-            background: conic-gradient(
-                rgba(255,255,255,0.3) 0deg,
-                rgba(255,255,255,0.3) calc(var(--progress) * 360deg),
-                transparent calc(var(--progress) * 360deg),
-                transparent 360deg
-            );
-        }
-
-        #fishBreadIcon {
-            font-size: 22px;
-            z-index: 1;
-        }
-
-        #fishBreadCount {
-            color: #333;
-            font-size: 14px;
-            font-weight: bold;
-            z-index: 1;
-            text-shadow: 1px 1px 0 white;
-        }
-
-        /* Unit Cards */
-        #unitCardsContainer {
-            display: flex;
-            gap: 6px;
-            flex: 1;
-            justify-content: center;
-        }
-
-        .unit-card {
-            width: 70px;
-            height: 85px;
-            background: linear-gradient(180deg, #f5f0e6 0%, #e8e0d5 100%);
-            border-radius: 8px;
-            border: 2px solid #c0b0a0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 4px 5px 4px;
-            cursor: pointer;
-            transition: transform 0.15s, border-color 0.15s;
-            position: relative;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .unit-card.active {
-            border-color: #8B4513;
-        }
-
-        .unit-card.active:active {
-            transform: scale(0.95);
-        }
-
-        .unit-card.locked {
-            opacity: 0.6;
-            cursor: default;
-        }
-
-        .unit-card.locked::before {
-            content: '🔒';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        #fishBreadGauge .fish-icon {
             font-size: 24px;
-            z-index: 5;
         }
 
-        .unit-icon-container {
-            width: 45px;
-            height: 45px;
-            background: #d0c8b8;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #a09080;
-        }
-
-        .unit-icon {
-            font-size: 28px;
-        }
-
-        .unit-cost {
-            background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
-            padding: 2px 8px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            border: 2px solid #CC8800;
-        }
-
-        .unit-cost .cost-icon {
-            font-size: 12px;
-        }
-
-        .unit-cost span {
+        #fishBreadGauge .fish-count {
             color: #333;
-            font-size: 12px;
+            font-size: 16px;
             font-weight: bold;
+            text-shadow: 1px 1px 0 white;
         }
 
         /* Tutorial Finger */
         #tutorialFinger {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             pointer-events: none;
             z-index: 100;
             animation: fingerTap 1s ease-in-out infinite;
             display: none;
+            font-size: 40px;
         }
 
         @keyframes fingerTap {
             0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
-            50% { transform: translate(0, 15px) scale(0.9); opacity: 0.8; }
+            50% { transform: translate(0, 10px) scale(0.95); opacity: 0.8; }
         }
 
-        /* CTA Button */
-        #ctaButton {
-            position: absolute;
-            bottom: 150px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(180deg, #4CAF50 0%, #388E3C 100%);
-            border: 3px solid #81C784;
-            border-radius: 25px;
-            padding: 14px 35px;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 50;
-            display: none;
-            animation: ctaPulse 1.5s ease-in-out infinite;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
-        }
-
-        @keyframes ctaPulse {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.08); }
-        }
-
-        /* Victory/Defeat Screen */
+        /* End Screen */
         #endScreen {
             position: absolute;
             top: 0;
@@ -341,60 +302,99 @@
         }
 
         #endTitle {
-            font-size: 42px;
+            font-size: 36px;
             font-weight: bold;
             color: #FFD700;
             text-shadow: 2px 2px 4px black;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         #endCta {
-            background: linear-gradient(180deg, #4CAF50 0%, #388E3C 100%);
-            border: 3px solid #81C784;
-            border-radius: 25px;
+            background: linear-gradient(180deg, #E53935 0%, #C62828 100%);
+            border: 3px solid #FFCDD2;
+            border-radius: 15px;
             padding: 15px 40px;
             color: white;
             font-size: 20px;
             font-weight: bold;
             cursor: pointer;
-            animation: endCtaPulse 1.5s ease-in-out infinite;
+            animation: pulse 1.5s ease-in-out infinite;
         }
 
-        @keyframes endCtaPulse {
+        @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
+        }
+
+        /* Evolution Effect */
+        #evolutionEffect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 150;
+            pointer-events: none;
+        }
+
+        #evolutionEffect.active {
+            display: flex;
+            animation: flashEffect 0.8s ease-out;
+        }
+
+        @keyframes flashEffect {
+            0% { background: rgba(255, 255, 255, 0.9); }
+            100% { background: rgba(255, 255, 255, 0); }
+        }
+
+        #evolutionText {
+            font-size: 32px;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px black;
+            animation: evolutionTextAnim 0.8s ease-out;
+        }
+
+        @keyframes evolutionTextAnim {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
         }
 
         /* Floating Effects */
         .damage-number {
             position: absolute;
             color: #FF4444;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            text-shadow: 2px 2px 2px black;
+            text-shadow: 1px 1px 2px black;
             pointer-events: none;
             animation: damageFloat 0.8s ease-out forwards;
         }
 
         @keyframes damageFloat {
             0% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 0; transform: translateY(-30px); }
         }
 
         .gold-popup {
             position: absolute;
             color: #FFD700;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
-            text-shadow: 2px 2px 2px black;
+            text-shadow: 1px 1px 2px black;
             pointer-events: none;
             animation: goldFloat 1s ease-out forwards;
         }
 
         @keyframes goldFloat {
             0% { opacity: 1; transform: translateY(0) scale(1); }
-            50% { transform: translateY(-25px) scale(1.3); }
-            100% { opacity: 0; transform: translateY(-50px) scale(0.8); }
+            50% { transform: translateY(-20px) scale(1.2); }
+            100% { opacity: 0; transform: translateY(-40px) scale(0.8); }
         }
     </style>
 </head>
@@ -402,113 +402,78 @@
     <div id="gameContainer">
         <canvas id="gameCanvas"></canvas>
 
-        <!-- Top UI -->
+        <!-- Top Bar -->
         <div id="topBar">
             <div class="top-left">
-                <div class="resource-box">
-                    <span class="gold-icon">💰</span>
+                <div id="gameLogo">CAT WARS</div>
+                <button id="ctaButton">플레이</button>
+            </div>
+            <div class="top-right">
+                <div id="goldDisplay">
+                    <div class="gold-icon"></div>
                     <span id="goldAmount">0</span>
                 </div>
             </div>
-            <div id="timelineDisplay">
-                <div class="timeline">Timeline 1</div>
-                <div class="battle">Battle <span id="waveNumber">1</span></div>
-            </div>
         </div>
 
-        <!-- Progress Bar -->
-        <div id="progressContainer">
-            <div id="progressText">0 / 10</div>
-            <div id="progressBarOuter">
-                <div id="progressBarInner"></div>
-            </div>
+        <!-- Bonus Fish Bread -->
+        <div id="bonusFishBread">
+            <div class="sparkle-icon">🐟</div>
+            <div class="bonus-amount">500</div>
         </div>
 
         <!-- Bottom Panel -->
         <div id="bottomPanel">
-            <!-- Fish Bread Gauge -->
-            <div id="fishBreadContainer">
-                <div id="fishBreadGauge" style="--progress: 0">
-                    <div id="fishBreadIcon">🐟</div>
-                    <div id="fishBreadCount">245</div>
+            <!-- Unit Cards -->
+            <div id="unitCardsContainer">
+                <div class="unit-card" id="card0" data-index="0">
+                    <div class="spawn-count">0/3</div>
+                    <div class="unit-thumbnail">
+                        <div style="font-size: 32px;">⚔️</div>
+                    </div>
+                    <button class="action-btn spawn">🐟 30</button>
+                </div>
+                <div class="unit-card" id="card1" data-index="1">
+                    <div class="spawn-count">0/3</div>
+                    <div class="unit-thumbnail">
+                        <div style="font-size: 32px;">🏹</div>
+                    </div>
+                    <button class="action-btn spawn">🐟 40</button>
+                </div>
+                <div class="unit-card" id="card2" data-index="2">
+                    <div class="spawn-count">0/3</div>
+                    <div class="unit-thumbnail">
+                        <div style="font-size: 32px;">🛡️</div>
+                    </div>
+                    <button class="action-btn spawn">🐟 80</button>
                 </div>
             </div>
 
-            <!-- Unit Cards -->
-            <div id="unitCardsContainer">
-                <div class="unit-card active" id="card1" data-index="0">
-                    <div class="unit-icon-container">
-                        <div class="unit-icon">🐱</div>
-                    </div>
-                    <div class="unit-cost">
-                        <span class="cost-icon">🐟</span>
-                        <span>30</span>
-                    </div>
-                </div>
-                <div class="unit-card active" id="card2" data-index="1">
-                    <div class="unit-icon-container">
-                        <div class="unit-icon">😼</div>
-                    </div>
-                    <div class="unit-cost">
-                        <span class="cost-icon">🐟</span>
-                        <span>40</span>
-                    </div>
-                </div>
-                <div class="unit-card active" id="card3" data-index="2">
-                    <div class="unit-icon-container">
-                        <div class="unit-icon">🙀</div>
-                    </div>
-                    <div class="unit-cost">
-                        <span class="cost-icon">🐟</span>
-                        <span>500</span>
-                    </div>
+            <!-- Fish Bread Gauge -->
+            <div id="fishBreadContainer">
+                <div id="fishBreadGauge">
+                    <div class="fish-icon">🐟</div>
+                    <div class="fish-count" id="fishBreadCount">100</div>
                 </div>
             </div>
         </div>
 
         <!-- Tutorial Finger -->
-        <div id="tutorialFinger">
-            <svg viewBox="0 0 100 100" fill="white">
-                <ellipse cx="50" cy="90" rx="25" ry="8" fill="rgba(0,0,0,0.3)"/>
-                <path d="M42 15 Q50 5 58 15 L58 45 Q58 52 50 52 Q42 52 42 45 Z" fill="#FFDAB9" stroke="#DEB887" stroke-width="2"/>
-                <path d="M58 32 Q65 25 72 32 L72 55 Q72 62 65 62 L58 62 L58 32" fill="#FFDAB9" stroke="#DEB887" stroke-width="2"/>
-                <path d="M72 38 Q79 32 85 38 L85 55 Q85 62 78 62 L72 62 L72 38" fill="#FFDAB9" stroke="#DEB887" stroke-width="2"/>
-                <path d="M42 32 Q35 25 28 32 L28 55 Q28 62 35 62 L42 62 L42 32" fill="#FFDAB9" stroke="#DEB887" stroke-width="2"/>
-                <ellipse cx="50" cy="72" rx="35" ry="22" fill="#FFDAB9" stroke="#DEB887" stroke-width="2"/>
-            </svg>
-        </div>
+        <div id="tutorialFinger">👆</div>
 
-        <!-- CTA Button -->
-        <button id="ctaButton">지금 플레이!</button>
+        <!-- Evolution Effect -->
+        <div id="evolutionEffect">
+            <div id="evolutionText">진화!</div>
+        </div>
 
         <!-- End Screen -->
         <div id="endScreen">
-            <div id="endTitle">Victory!</div>
-            <button id="endCta">다운로드!</button>
+            <div id="endTitle">게임 오버</div>
+            <button id="endCta">지금 다운로드!</button>
         </div>
     </div>
 
     <script>
-        // Game Sprites (Base64 encoded)
-        const GameSprites = {
-            foodIcon: new Image(),
-            goldIcon: new Image(),
-            thumbnail1: new Image(),
-            thumbnail2: new Image(),
-            thumbnail3: new Image(),
-            playerUnit1: new Image(),
-            playerUnit2: new Image(),
-            playerUnit3: new Image(),
-            enemyUnit1: new Image(),
-            enemyUnit2: new Image(),
-            enemyUnit3: new Image()
-        };
-
-        // Load sprites on init
-        function loadSprites() {
-            // Will be loaded when needed - keeping file size small for AppLovin 5MB limit
-        }
-
         // MRAID Integration
         (function() {
             window.mraid = window.mraid || {
@@ -536,63 +501,45 @@
         const GameState = {
             fishBread: 100,
             fishBreadMax: 999,
-            fishBreadProductionRate: 2,
-            fishBreadGaugeProgress: 0,
+            fishBreadProductionRate: 3, // per second
             gold: 0,
-            wave: 1,
-            maxWaves: 3,
-            unitCosts: [30, 40, 80],
-            playerBaseHP: 800,
-            enemyBaseHP: 500,
-            playerBaseMaxHP: 800,
-            enemyBaseMaxHP: 500,
-            enemiesKilled: 0,
-            totalEnemies: 10,
+            playerBaseHP: 400,
+            playerBaseMaxHP: 400,
             gameStarted: false,
             gameEnded: false,
             showTutorial: true,
-            interactionCount: 0,
+            bonusFishBreadUsed: false,
+            totalEvolutions: 0,
             lastTime: 0,
-            deltaTime: 0
+            deltaTime: 0,
+            spawnTimer: 0,
+            spawnInterval: 2000 // ms
         };
 
-        // Unit Templates (cat warriors style)
-        const UnitTemplates = {
-            player: [
-                { name: 'Warrior', hp: 60, attack: 12, speed: 50, range: 35, attackSpeed: 0.9, type: 'melee', color: '#888888' },
-                { name: 'Ranger', hp: 45, attack: 18, speed: 45, range: 120, attackSpeed: 0.7, type: 'ranged', color: '#4CAF50' },
-                { name: 'Knight', hp: 120, attack: 25, speed: 35, range: 40, attackSpeed: 1.2, type: 'melee', color: '#9E9E9E' }
-            ],
-            enemy: [
-                { name: 'Enemy1', hp: 40, attack: 5, speed: 35, range: 35, attackSpeed: 1.2, type: 'melee', color: '#8B4513' },
-                { name: 'Enemy2', hp: 60, attack: 8, speed: 30, range: 35, attackSpeed: 1.3, type: 'melee', color: '#A0522D' },
-                { name: 'Enemy3', hp: 90, attack: 12, speed: 25, range: 40, attackSpeed: 1.5, type: 'melee', color: '#6B4423' }
-            ]
-        };
+        // Unit Data
+        const UnitData = [
+            { name: 'Warrior', cost: 30, hp: 60, attack: 12, speed: 50, range: 35, attackSpeed: 0.9, spawnCount: 0, evolutionLevel: 0 },
+            { name: 'Archer', cost: 40, hp: 45, attack: 18, speed: 45, range: 120, attackSpeed: 0.7, spawnCount: 0, evolutionLevel: 0 },
+            { name: 'Knight', cost: 80, hp: 120, attack: 25, speed: 35, range: 40, attackSpeed: 1.2, spawnCount: 0, evolutionLevel: 0 }
+        ];
 
-        // Wave Configurations - 순차적으로 더 많은 적 등장
-        const WaveConfigs = [
-            { enemies: [{ type: 0, count: 4, delay: 1500 }], goldPerKill: 5 },
-            { enemies: [{ type: 0, count: 5, delay: 1200 }, { type: 1, count: 3, delay: 1500 }], goldPerKill: 8 },
-            { enemies: [{ type: 0, count: 6, delay: 1000 }, { type: 1, count: 4, delay: 1200 }, { type: 2, count: 2, delay: 2000 }], goldPerKill: 10 }
+        // Enemy Templates
+        const EnemyTemplates = [
+            { name: 'Goblin', hp: 30, attack: 5, speed: 45, range: 35, attackSpeed: 1.2, goldReward: 5 },
+            { name: 'Orc', hp: 60, attack: 10, speed: 35, range: 35, attackSpeed: 1.3, goldReward: 10 },
+            { name: 'Troll', hp: 120, attack: 18, speed: 28, range: 40, attackSpeed: 1.5, goldReward: 15 },
+            { name: 'Boss', hp: 200, attack: 25, speed: 20, range: 45, attackSpeed: 1.8, goldReward: 50 }
         ];
 
         // Game Objects
         let units = [];
-        let projectiles = [];
         let effects = [];
-        let decorations = [];
 
         // Canvas
         let canvas, ctx;
         let canvasWidth, canvasHeight;
         let groundY, battlefieldY;
-        let playerBaseX, enemyBaseX;
-
-        // Wave spawning
-        let waveSpawnTimer = 0;
-        let waveTypeIndex = 0;
-        let waveEnemiesSpawned = 0;
+        let playerBaseX, enemySpawnX;
 
         // Initialize
         function init() {
@@ -603,7 +550,6 @@
             window.addEventListener('resize', resizeCanvas);
             window.addEventListener('orientationchange', () => setTimeout(resizeCanvas, 100));
 
-            generateDecorations();
             setupEventListeners();
 
             if (window.mraid && window.mraid.getState() === 'loading') {
@@ -616,34 +562,21 @@
         function resizeCanvas() {
             const container = document.getElementById('gameContainer');
             canvasWidth = container.clientWidth;
-            canvasHeight = container.clientHeight - 130;
+            canvasHeight = container.clientHeight - 150;
 
             canvas.width = canvasWidth;
             canvas.height = canvasHeight;
 
             groundY = canvasHeight * 0.75;
-            battlefieldY = groundY - 25;
-            playerBaseX = 50;
-            enemyBaseX = canvasWidth - 50;
+            battlefieldY = groundY - 20;
+            playerBaseX = 60;
+            enemySpawnX = canvasWidth + 30;
 
-            generateDecorations();
             updateTutorialFingerPosition();
         }
 
-        function generateDecorations() {
-            decorations = [];
-            // Add some grass tufts, barrels, bones etc
-            for (let i = 0; i < 8; i++) {
-                decorations.push({
-                    x: Math.random() * canvasWidth,
-                    y: groundY + Math.random() * 30 - 15,
-                    type: ['grass', 'barrel', 'bone', 'rock'][Math.floor(Math.random() * 4)],
-                    scale: 0.5 + Math.random() * 0.5
-                });
-            }
-        }
-
         function setupEventListeners() {
+            // Unit card clicks
             document.querySelectorAll('.unit-card').forEach((card, index) => {
                 card.addEventListener('click', () => handleCardClick(index));
                 card.addEventListener('touchstart', (e) => {
@@ -652,6 +585,10 @@
                 });
             });
 
+            // Bonus fish bread
+            document.getElementById('bonusFishBread').addEventListener('click', handleBonusFishBread);
+
+            // CTA buttons
             document.getElementById('ctaButton').addEventListener('click', handleCTA);
             document.getElementById('endCta').addEventListener('click', handleCTA);
         }
@@ -661,7 +598,9 @@
             GameState.lastTime = performance.now();
             showTutorialFinger();
             requestAnimationFrame(gameLoop);
-            setTimeout(() => spawnWave(), 1500);
+
+            // Start spawning enemies after a delay
+            setTimeout(() => spawnEnemy(), 2000);
         }
 
         function gameLoop(currentTime) {
@@ -677,7 +616,7 @@
 
         function update() {
             updateFishBreadProduction();
-            updateWaveSpawning();
+            updateEnemySpawning();
             updateUnits();
             updateEffects();
             checkGameEnd();
@@ -685,81 +624,81 @@
         }
 
         function updateFishBreadProduction() {
-            GameState.fishBreadGaugeProgress += GameState.deltaTime * GameState.fishBreadProductionRate;
-            if (GameState.fishBreadGaugeProgress >= 1) {
-                GameState.fishBreadGaugeProgress = 0;
-                GameState.fishBread = Math.min(GameState.fishBread + 5, GameState.fishBreadMax);
+            GameState.fishBread = Math.min(
+                GameState.fishBread + GameState.fishBreadProductionRate * GameState.deltaTime,
+                GameState.fishBreadMax
+            );
+        }
+
+        function updateEnemySpawning() {
+            GameState.spawnTimer += GameState.deltaTime * 1000;
+
+            if (GameState.spawnTimer >= GameState.spawnInterval) {
+                GameState.spawnTimer = 0;
+                spawnEnemy();
             }
         }
 
-        function updateWaveSpawning() {
-            if (GameState.wave > GameState.maxWaves) return;
+        function getAvailableEnemyTypes() {
+            const types = [0]; // Goblin always available
+            if (GameState.totalEvolutions >= 1) types.push(1); // Orc
+            if (GameState.totalEvolutions >= 2) types.push(2); // Troll
+            if (GameState.totalEvolutions >= 3) types.push(3); // Boss (rare)
+            return types;
+        }
 
-            const waveConfig = WaveConfigs[GameState.wave - 1];
-            if (!waveConfig) return;
+        function spawnEnemy() {
+            const types = getAvailableEnemyTypes();
+            let typeIndex;
 
-            waveSpawnTimer += GameState.deltaTime * 1000;
-
-            if (waveTypeIndex < waveConfig.enemies.length) {
-                const enemyGroup = waveConfig.enemies[waveTypeIndex];
-                if (waveSpawnTimer >= enemyGroup.delay && waveEnemiesSpawned < enemyGroup.count) {
-                    spawnEnemy(enemyGroup.type);
-                    waveEnemiesSpawned++;
-                    waveSpawnTimer = 0;
-
-                    if (waveEnemiesSpawned >= enemyGroup.count) {
-                        waveTypeIndex++;
-                        waveEnemiesSpawned = 0;
-                    }
-                }
+            // Boss is rare
+            if (types.includes(3) && Math.random() < 0.1) {
+                typeIndex = 3;
+            } else {
+                typeIndex = types[Math.floor(Math.random() * (types.length - (types.includes(3) ? 1 : 0)))];
             }
-        }
 
-        function spawnWave() {
-            waveSpawnTimer = 0;
-            waveTypeIndex = 0;
-            waveEnemiesSpawned = 0;
-        }
-
-        function spawnEnemy(typeIndex) {
-            const template = UnitTemplates.enemy[typeIndex];
-            const waveMultiplier = 1 + (GameState.wave - 1) * 0.25;
+            const template = EnemyTemplates[typeIndex];
+            const strengthMultiplier = 1 + GameState.totalEvolutions * 0.1;
 
             units.push({
-                x: enemyBaseX - 40,
-                y: battlefieldY + (Math.random() - 0.5) * 20,
-                hp: Math.floor(template.hp * waveMultiplier),
-                maxHp: Math.floor(template.hp * waveMultiplier),
-                attack: Math.floor(template.attack * waveMultiplier),
+                x: enemySpawnX,
+                y: battlefieldY + (Math.random() - 0.5) * 30,
+                hp: Math.floor(template.hp * strengthMultiplier),
+                maxHp: Math.floor(template.hp * strengthMultiplier),
+                attack: Math.floor(template.attack * strengthMultiplier),
                 speed: template.speed,
                 range: template.range,
                 attackSpeed: template.attackSpeed,
                 attackCooldown: 0,
                 isPlayer: false,
-                type: template.type,
-                color: template.color,
-                goldReward: WaveConfigs[GameState.wave - 1].goldPerKill,
+                type: typeIndex,
+                goldReward: template.goldReward,
                 animFrame: 0,
                 facingRight: false
             });
+
+            // Adjust spawn interval based on evolutions
+            GameState.spawnInterval = Math.max(1000, 2000 - GameState.totalEvolutions * 200);
         }
 
         function spawnPlayerUnit(typeIndex) {
-            const template = UnitTemplates.player[typeIndex];
+            const data = UnitData[typeIndex];
+            const evolutionMultiplier = 1 + data.evolutionLevel * 0.3;
 
             units.push({
                 x: playerBaseX + 50,
-                y: battlefieldY + (Math.random() - 0.5) * 20,
-                hp: template.hp,
-                maxHp: template.hp,
-                attack: template.attack,
-                speed: template.speed,
-                range: template.range,
-                attackSpeed: template.attackSpeed,
+                y: battlefieldY + (Math.random() - 0.5) * 30,
+                hp: Math.floor(data.hp * evolutionMultiplier),
+                maxHp: Math.floor(data.hp * evolutionMultiplier),
+                attack: Math.floor(data.attack * evolutionMultiplier),
+                speed: data.speed,
+                range: data.range,
+                attackSpeed: data.attackSpeed,
                 attackCooldown: 0,
                 isPlayer: true,
-                type: template.type,
-                color: template.color,
+                type: typeIndex,
+                evolutionLevel: data.evolutionLevel,
                 animFrame: 0,
                 facingRight: true
             });
@@ -784,13 +723,11 @@
                         const direction = unit.isPlayer ? 1 : -1;
                         unit.x += direction * unit.speed * GameState.deltaTime;
                     }
-                } else {
-                    const direction = unit.isPlayer ? 1 : -1;
-                    const baseX = unit.isPlayer ? enemyBaseX : playerBaseX;
-                    const distanceToBase = Math.abs(baseX - unit.x);
-
+                } else if (!unit.isPlayer) {
+                    // Enemy moves toward player base
+                    const distanceToBase = Math.abs(playerBaseX - unit.x);
                     if (distanceToBase > unit.range) {
-                        unit.x += direction * unit.speed * GameState.deltaTime;
+                        unit.x -= unit.speed * GameState.deltaTime;
                     } else {
                         unit.attackCooldown -= GameState.deltaTime;
                         if (unit.attackCooldown <= 0) {
@@ -798,16 +735,23 @@
                             unit.attackCooldown = unit.attackSpeed;
                         }
                     }
+                } else {
+                    // Player unit moves forward
+                    unit.x += unit.speed * GameState.deltaTime;
                 }
 
+                // Remove dead units
                 if (unit.hp <= 0) {
                     if (!unit.isPlayer) {
                         GameState.gold += unit.goldReward;
-                        GameState.enemiesKilled++;
-                        showGoldPopup(unit.x, unit.y - 40, '+' + unit.goldReward);
+                        showGoldPopup(unit.x, unit.y - 30, '+' + unit.goldReward);
                     }
                     units.splice(i, 1);
-                    checkWaveComplete();
+                }
+
+                // Remove units that went off screen
+                if (unit.x > canvasWidth + 100 || unit.x < -100) {
+                    units.splice(i, 1);
                 }
             }
         }
@@ -830,18 +774,13 @@
 
         function attack(attacker, target) {
             target.hp -= attacker.attack;
-            showDamageNumber(target.x, target.y - 30, attacker.attack);
+            showDamageNumber(target.x, target.y - 20, attacker.attack);
             effects.push({ x: target.x, y: target.y, type: 'hit', life: 0.2 });
         }
 
         function attackBase(unit) {
-            if (unit.isPlayer) {
-                GameState.enemyBaseHP -= unit.attack;
-                showDamageNumber(enemyBaseX, groundY - 80, unit.attack);
-            } else {
-                GameState.playerBaseHP -= unit.attack;
-                showDamageNumber(playerBaseX, groundY - 80, unit.attack);
-            }
+            GameState.playerBaseHP -= unit.attack;
+            showDamageNumber(playerBaseX, groundY - 60, unit.attack);
         }
 
         function updateEffects() {
@@ -851,41 +790,15 @@
             }
         }
 
-        function checkWaveComplete() {
-            const enemiesRemaining = units.filter(u => !u.isPlayer).length;
-            const waveConfig = WaveConfigs[GameState.wave - 1];
-            if (!waveConfig) return;
-
-            const allSpawned = waveTypeIndex >= waveConfig.enemies.length;
-            if (allSpawned && enemiesRemaining === 0 && GameState.wave < GameState.maxWaves) {
-                GameState.wave++;
-                GameState.totalEnemies = WaveConfigs[GameState.wave - 1].enemies.reduce((s, e) => s + e.count, 0);
-                GameState.enemiesKilled = 0;
-                setTimeout(() => spawnWave(), 1500);
-            }
-        }
-
         function checkGameEnd() {
             if (GameState.playerBaseHP <= 0) {
                 endGame(false);
-            } else if (GameState.enemyBaseHP <= 0) {
-                endGame(true);
-            } else if (GameState.wave >= GameState.maxWaves) {
-                const enemiesRemaining = units.filter(u => !u.isPlayer).length;
-                const allSpawned = waveTypeIndex >= WaveConfigs[GameState.wave - 1].enemies.length;
-                if (allSpawned && enemiesRemaining === 0) {
-                    endGame(true);
-                }
-            }
-
-            if (GameState.interactionCount >= 2 && document.getElementById('ctaButton').style.display !== 'block') {
-                document.getElementById('ctaButton').style.display = 'block';
             }
         }
 
         function endGame(victory) {
             GameState.gameEnded = true;
-            document.getElementById('endTitle').textContent = victory ? '승리!' : '패배!';
+            document.getElementById('endTitle').textContent = victory ? '승리!' : '게임 오버';
             document.getElementById('endTitle').style.color = victory ? '#4CAF50' : '#F44336';
             document.getElementById('endScreen').style.display = 'flex';
         }
@@ -898,12 +811,52 @@
                 document.getElementById('tutorialFinger').style.display = 'none';
             }
 
-            const cost = GameState.unitCosts[index];
-            if (GameState.fishBread >= cost) {
-                GameState.fishBread -= cost;
-                spawnPlayerUnit(index);
-                GameState.interactionCount++;
+            const data = UnitData[index];
+
+            // Check if ready to evolve
+            if (data.spawnCount >= 3) {
+                evolveUnit(index);
+                return;
             }
+
+            // Spawn unit
+            if (GameState.fishBread >= data.cost) {
+                GameState.fishBread -= data.cost;
+                data.spawnCount++;
+                spawnPlayerUnit(index);
+                updateCardUI(index);
+            }
+        }
+
+        function evolveUnit(index) {
+            const data = UnitData[index];
+            data.evolutionLevel++;
+            data.spawnCount = 0;
+            GameState.totalEvolutions++;
+
+            // Increase fish bread production
+            GameState.fishBreadProductionRate += 2;
+
+            // Show evolution effect
+            showEvolutionEffect();
+
+            updateCardUI(index);
+        }
+
+        function showEvolutionEffect() {
+            const effect = document.getElementById('evolutionEffect');
+            effect.classList.add('active');
+            setTimeout(() => {
+                effect.classList.remove('active');
+            }, 800);
+        }
+
+        function handleBonusFishBread() {
+            if (GameState.bonusFishBreadUsed) return;
+
+            GameState.bonusFishBreadUsed = true;
+            GameState.fishBread = Math.min(GameState.fishBread + 500, GameState.fishBreadMax);
+            document.getElementById('bonusFishBread').classList.add('hidden');
         }
 
         function handleCTA() {
@@ -916,27 +869,33 @@
         }
 
         function updateUI() {
-            document.getElementById('goldAmount').textContent = GameState.gold;
-            document.getElementById('waveNumber').textContent = GameState.wave;
-            document.getElementById('fishBreadCount').textContent = GameState.fishBread;
+            document.getElementById('goldAmount').textContent = Math.floor(GameState.gold);
+            document.getElementById('fishBreadCount').textContent = Math.floor(GameState.fishBread);
 
-            const gauge = document.getElementById('fishBreadGauge');
-            gauge.style.setProperty('--progress', GameState.fishBreadGaugeProgress);
+            // Update all card UIs
+            UnitData.forEach((_, index) => updateCardUI(index));
+        }
 
-            // Progress bar
-            const waveConfig = WaveConfigs[GameState.wave - 1];
-            if (waveConfig) {
-                const total = waveConfig.enemies.reduce((s, e) => s + e.count, 0);
-                const killed = Math.min(GameState.enemiesKilled, total);
-                document.getElementById('progressText').textContent = killed + ' / ' + total;
-                document.getElementById('progressBarInner').style.width = (killed / total * 100) + '%';
+        function updateCardUI(index) {
+            const card = document.getElementById('card' + index);
+            const data = UnitData[index];
+
+            // Update spawn count
+            const countEl = card.querySelector('.spawn-count');
+            countEl.textContent = `${data.spawnCount}/3`;
+
+            // Update action button
+            const btn = card.querySelector('.action-btn');
+            if (data.spawnCount >= 3) {
+                btn.className = 'action-btn evolve';
+                btn.textContent = '진화';
+            } else {
+                btn.className = 'action-btn spawn';
+                btn.innerHTML = `🐟 ${data.cost}`;
+                if (GameState.fishBread < data.cost) {
+                    btn.classList.add('disabled');
+                }
             }
-
-            // Card availability
-            document.querySelectorAll('.unit-card').forEach((card, index) => {
-                const cost = GameState.unitCosts[index];
-                card.style.opacity = GameState.fishBread >= cost ? '1' : '0.5';
-            });
         }
 
         function showTutorialFinger() {
@@ -946,12 +905,12 @@
         }
 
         function updateTutorialFingerPosition() {
-            const card1 = document.getElementById('card1');
-            if (!card1) return;
-            const rect = card1.getBoundingClientRect();
+            const card = document.getElementById('card0');
+            if (!card) return;
+            const rect = card.getBoundingClientRect();
             const finger = document.getElementById('tutorialFinger');
-            finger.style.left = (rect.left + rect.width / 2 - 30) + 'px';
-            finger.style.top = (rect.top - 40) + 'px';
+            finger.style.left = (rect.left + rect.width / 2 - 25) + 'px';
+            finger.style.top = (rect.top - 30) + 'px';
         }
 
         function showDamageNumber(x, y, damage) {
@@ -967,7 +926,7 @@
         function showGoldPopup(x, y, text) {
             const elem = document.createElement('div');
             elem.className = 'gold-popup';
-            elem.innerHTML = text + ' 💰';
+            elem.textContent = text + ' 🪙';
             elem.style.left = x + 'px';
             elem.style.top = y + 'px';
             document.getElementById('gameContainer').appendChild(elem);
@@ -977,14 +936,13 @@
         function render() {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
             drawBackground();
-            drawDecorations();
-            drawBases();
+            drawBase();
             drawUnits();
             drawEffects();
         }
 
         function drawBackground() {
-            // Sky
+            // Sky gradient
             const skyGrad = ctx.createLinearGradient(0, 0, 0, groundY);
             skyGrad.addColorStop(0, '#87CEEB');
             skyGrad.addColorStop(1, '#B8E0B8');
@@ -995,105 +953,72 @@
             ctx.fillStyle = '#6B8E23';
             ctx.beginPath();
             ctx.moveTo(0, groundY * 0.6);
-            for (let x = 0; x <= canvasWidth; x += 50) {
-                ctx.lineTo(x, groundY * 0.6 + Math.sin(x * 0.02) * 20);
+            for (let x = 0; x <= canvasWidth; x += 40) {
+                ctx.lineTo(x, groundY * 0.6 + Math.sin(x * 0.015) * 25);
             }
             ctx.lineTo(canvasWidth, groundY);
             ctx.lineTo(0, groundY);
             ctx.closePath();
             ctx.fill();
 
-            // Main ground
-            ctx.fillStyle = '#7CB342';
-            ctx.fillRect(0, groundY - 10, canvasWidth, canvasHeight - groundY + 10);
+            // Trees
+            ctx.fillStyle = '#2E7D32';
+            for (let i = 0; i < 5; i++) {
+                const tx = 30 + i * (canvasWidth / 5);
+                const ty = groundY * 0.5 + Math.sin(i * 2) * 20;
+                ctx.beginPath();
+                ctx.moveTo(tx, ty);
+                ctx.lineTo(tx - 20, ty + 40);
+                ctx.lineTo(tx + 20, ty + 40);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            // Ground
+            ctx.fillStyle = '#5D4037';
+            ctx.fillRect(0, groundY - 5, canvasWidth, canvasHeight - groundY + 5);
 
             // Grass line
-            ctx.fillStyle = '#558B2F';
-            ctx.fillRect(0, groundY - 10, canvasWidth, 8);
+            ctx.fillStyle = '#7CB342';
+            ctx.fillRect(0, groundY - 10, canvasWidth, 15);
         }
 
-        function drawDecorations() {
-            for (const deco of decorations) {
-                ctx.save();
-                ctx.translate(deco.x, deco.y);
-                ctx.scale(deco.scale, deco.scale);
+        function drawBase() {
+            const x = playerBaseX;
+            const y = groundY;
 
-                if (deco.type === 'barrel') {
-                    ctx.fillStyle = '#8B4513';
-                    ctx.fillRect(-10, -15, 20, 20);
-                    ctx.fillStyle = '#A0522D';
-                    ctx.fillRect(-8, -13, 16, 16);
-                } else if (deco.type === 'bone') {
-                    ctx.fillStyle = '#F5F5DC';
-                    ctx.beginPath();
-                    ctx.ellipse(0, 0, 12, 4, 0.3, 0, Math.PI * 2);
-                    ctx.fill();
-                } else if (deco.type === 'rock') {
-                    ctx.fillStyle = '#808080';
-                    ctx.beginPath();
-                    ctx.arc(0, 0, 8, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                ctx.restore();
-            }
-        }
+            // Base structure (stone tower)
+            ctx.fillStyle = '#78909C';
+            ctx.fillRect(x - 30, y - 80, 60, 80);
 
-        function drawBases() {
-            // Player base (left) - stone fortress
-            drawFortress(playerBaseX, groundY, GameState.playerBaseHP, GameState.playerBaseMaxHP, '#4CAF50', true);
-
-            // Enemy base (right) - stone fortress
-            drawFortress(enemyBaseX, groundY, GameState.enemyBaseHP, GameState.enemyBaseMaxHP, '#F44336', false);
-        }
-
-        function drawFortress(x, y, hp, maxHp, hpColor, isLeft) {
-            const dir = isLeft ? 1 : -1;
-
-            // Base stone
-            ctx.fillStyle = '#696969';
+            // Tower top
+            ctx.fillStyle = '#546E7A';
             ctx.beginPath();
-            ctx.moveTo(x - 45 * dir, y);
-            ctx.lineTo(x - 45 * dir, y - 70);
-            ctx.lineTo(x - 35 * dir, y - 85);
-            ctx.lineTo(x - 25 * dir, y - 70);
-            ctx.lineTo(x - 25 * dir, y - 90);
-            ctx.lineTo(x - 15 * dir, y - 75);
-            ctx.lineTo(x + 5 * dir, y - 75);
-            ctx.lineTo(x + 5 * dir, y - 95);
-            ctx.lineTo(x + 15 * dir, y - 80);
-            ctx.lineTo(x + 25 * dir, y - 80);
-            ctx.lineTo(x + 25 * dir, y - 70);
-            ctx.lineTo(x + 35 * dir, y - 70);
-            ctx.lineTo(x + 35 * dir, y);
+            ctx.moveTo(x - 35, y - 80);
+            ctx.lineTo(x, y - 100);
+            ctx.lineTo(x + 35, y - 80);
             ctx.closePath();
             ctx.fill();
 
-            // Stone details
-            ctx.strokeStyle = '#505050';
-            ctx.lineWidth = 2;
-            ctx.stroke();
+            // Windows
+            ctx.fillStyle = '#37474F';
+            ctx.fillRect(x - 15, y - 60, 10, 15);
+            ctx.fillRect(x + 5, y - 60, 10, 15);
 
-            // HP number
-            ctx.fillStyle = 'white';
-            ctx.font = 'bold 16px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText(Math.max(0, hp), x - 5 * dir, y - 100);
+            // HP bar background
+            ctx.fillStyle = '#333';
+            ctx.fillRect(x - 30, y - 115, 60, 10);
 
             // HP bar
-            const barWidth = 50;
-            const barX = x - 5 * dir - barWidth / 2;
-            const barY = y - 120;
+            const hpPercent = Math.max(0, GameState.playerBaseHP / GameState.playerBaseMaxHP);
+            ctx.fillStyle = hpPercent > 0.3 ? '#4CAF50' : '#F44336';
+            ctx.fillRect(x - 29, y - 114, 58 * hpPercent, 8);
 
-            ctx.fillStyle = '#333';
-            ctx.fillRect(barX, barY, barWidth, 8);
-
-            const hpPercent = Math.max(0, hp / maxHp);
-            ctx.fillStyle = hpColor;
-            ctx.fillRect(barX + 1, barY + 1, (barWidth - 2) * hpPercent, 6);
-
-            ctx.strokeStyle = '#222';
-            ctx.lineWidth = 1;
-            ctx.strokeRect(barX, barY, barWidth, 8);
+            // HP text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(Math.max(0, GameState.playerBaseHP), x, y - 120);
         }
 
         function drawUnits() {
@@ -1109,60 +1034,72 @@
             const bounce = Math.sin(unit.animFrame) * 2;
 
             // Shadow
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
             ctx.beginPath();
-            ctx.ellipse(x, y + 18, 14, 5, 0, 0, Math.PI * 2);
+            ctx.ellipse(x, y + 15, 12, 4, 0, 0, Math.PI * 2);
             ctx.fill();
 
+            // Body color based on unit type and side
+            let bodyColor, headColor;
+            if (unit.isPlayer) {
+                const colors = ['#8D6E63', '#A1887F', '#6D4C41'];
+                bodyColor = colors[unit.type] || '#8D6E63';
+                headColor = '#FFCC80';
+            } else {
+                const colors = ['#E57373', '#EF5350', '#C62828', '#B71C1C'];
+                bodyColor = colors[unit.type] || '#E57373';
+                headColor = '#FFAB91';
+            }
+
             // Body
-            ctx.fillStyle = unit.color;
+            ctx.fillStyle = bodyColor;
             ctx.beginPath();
-            ctx.ellipse(x, y - 5 + bounce, 16, 20, 0, 0, Math.PI * 2);
+            ctx.ellipse(x, y - 5 + bounce, 14, 18, 0, 0, Math.PI * 2);
             ctx.fill();
             ctx.strokeStyle = '#333';
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 1.5;
             ctx.stroke();
 
             // Head
-            ctx.fillStyle = unit.isPlayer ? '#F5DEB3' : '#D2B48C';
+            ctx.fillStyle = headColor;
             ctx.beginPath();
-            ctx.arc(x, y - 22 + bounce, 12, 0, Math.PI * 2);
+            ctx.arc(x, y - 20 + bounce, 10, 0, Math.PI * 2);
             ctx.fill();
             ctx.stroke();
 
-            // Ears (cat ears)
-            ctx.fillStyle = unit.isPlayer ? '#F5DEB3' : '#D2B48C';
+            // Cat ears
+            ctx.fillStyle = headColor;
             ctx.beginPath();
-            ctx.moveTo(x - 8, y - 30 + bounce);
-            ctx.lineTo(x - 12, y - 40 + bounce);
-            ctx.lineTo(x - 3, y - 32 + bounce);
+            ctx.moveTo(x - 7, y - 27 + bounce);
+            ctx.lineTo(x - 10, y - 36 + bounce);
+            ctx.lineTo(x - 3, y - 29 + bounce);
             ctx.closePath();
             ctx.fill();
             ctx.stroke();
 
             ctx.beginPath();
-            ctx.moveTo(x + 8, y - 30 + bounce);
-            ctx.lineTo(x + 12, y - 40 + bounce);
-            ctx.lineTo(x + 3, y - 32 + bounce);
+            ctx.moveTo(x + 7, y - 27 + bounce);
+            ctx.lineTo(x + 10, y - 36 + bounce);
+            ctx.lineTo(x + 3, y - 29 + bounce);
             ctx.closePath();
             ctx.fill();
             ctx.stroke();
 
             // Eyes
             ctx.fillStyle = '#333';
-            const eyeDir = unit.facingRight ? 2 : -2;
+            const eyeDir = unit.facingRight ? 1 : -1;
             ctx.beginPath();
-            ctx.arc(x - 4 + eyeDir, y - 24 + bounce, 2, 0, Math.PI * 2);
-            ctx.arc(x + 4 + eyeDir, y - 24 + bounce, 2, 0, Math.PI * 2);
+            ctx.arc(x - 3 + eyeDir, y - 21 + bounce, 2, 0, Math.PI * 2);
+            ctx.arc(x + 3 + eyeDir, y - 21 + bounce, 2, 0, Math.PI * 2);
             ctx.fill();
 
             // HP bar
             const hpPercent = unit.hp / unit.maxHp;
-            const barWidth = 28;
+            const barWidth = 24;
             ctx.fillStyle = '#333';
-            ctx.fillRect(x - barWidth / 2, y - 45 + bounce, barWidth, 4);
+            ctx.fillRect(x - barWidth / 2, y - 42 + bounce, barWidth, 4);
             ctx.fillStyle = unit.isPlayer ? '#4CAF50' : '#F44336';
-            ctx.fillRect(x - barWidth / 2, y - 45 + bounce, barWidth * hpPercent, 4);
+            ctx.fillRect(x - barWidth / 2, y - 42 + bounce, barWidth * hpPercent, 4);
         }
 
         function drawEffects() {
@@ -1170,7 +1107,7 @@
                 if (eff.type === 'hit') {
                     ctx.fillStyle = `rgba(255, 200, 0, ${eff.life * 3})`;
                     ctx.beginPath();
-                    ctx.arc(eff.x, eff.y, 20 * (0.3 - eff.life), 0, Math.PI * 2);
+                    ctx.arc(eff.x, eff.y, 15 * (0.3 - eff.life), 0, Math.PI * 2);
                     ctx.fill();
                 }
             }
